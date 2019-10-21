@@ -21,7 +21,7 @@ Se necesita una pagina web dinámica que contenga las siguientes secciones. Los 
     * Debe mostrar dos opciones de navegación en la paginación (**Previa**  / **Siguiente**).
 
 Importante:
-* No es necesario que los formularios (login o agregar usuario) tengan ninguna validación.
+* Los formularios (login o agregar usuario) deben de terner validación en los campos necesarios.
 * La parte principal del dashboard puede estar vacía.
 * En la lista de usuarios, puedes usar una tabla, una lista, tarjetas o contenedores. Coloca los items a tu gusto.
 * Puedes utilizar los colores de tu preferencia.
@@ -42,7 +42,7 @@ Campos del formulario de usuario:
 * Cédula
 * Edad
 * Género
-* Dirección
+* Dirección(Se debe permitir agregar multiples direcciónes)
 * Teléfono
 * Correo electrónico
 * Estado civil
