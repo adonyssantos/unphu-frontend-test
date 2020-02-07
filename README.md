@@ -26,6 +26,7 @@ Importante:
 * En la lista de usuarios, puedes usar una tabla, una lista, tarjetas o contenedores. Coloca los items a tu gusto.
 * Puedes utilizar los colores de tu preferencia.
 * Si piensas incluir animaciones, debes usar css / sass para las mismas (no jquery).
+* Implementar `REDUX` en los formularios.
 
 Observaciones:
 * Usar Typescript sería un plus.
