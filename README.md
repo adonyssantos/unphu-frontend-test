@@ -2,7 +2,7 @@
 
 Esta es una prueba de evaluación para la posición de `TypeScript React developer` en el departamento de desarrollo de la UNPHU.
 
-> Nota: Al completar la prueba, debes enviar un link del repositiorio con la solución a `test@unphu.edu.do`
+> Nota: Al completar la prueba, debes enviar un link del repositiorio con la solución a `test-email@unphu.edu.do`
 
 ---
 ## Prueba
