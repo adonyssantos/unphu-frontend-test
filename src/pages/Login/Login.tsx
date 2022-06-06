@@ -2,7 +2,7 @@ import { Button, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { AuthContainer } from '../../components';
 
-const Login = () => {
+export default function Login() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -46,6 +46,4 @@ const Login = () => {
       </form>
     </AuthContainer>
   );
-};
-
-export default Login;
+}
