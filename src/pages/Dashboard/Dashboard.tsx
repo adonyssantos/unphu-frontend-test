@@ -23,17 +23,32 @@ export default function Dashboard() {
     <PrivateRoute>
       <Layout>
         <h1 className='title'>Panel administrativo</h1>
-        <ul>
+        <ul className='cards-group'>
           {users.map((user: any) => (
             <li className='card' key={user}>
-              {user}
+              <h1 className='card-title'>{user}</h1>
+              <h2 className='card-subtitle'>Detalles del usuario:</h2>
+              <p className='card-text'>
+                <b>Cédula:</b> 1234567890
+              </p>
+              <p className='card-text'>
+                <b>Nombre completo:</b> Fulanito de tal
+              </p>
+              <p className='card-text'>
+                <b>Correo electrónico:</b> contact@fulano.dev
+              </p>
+              <p className='card-text'>
+                <b>Género:</b> Masculino
+              </p>
             </li>
           ))}
         </ul>
         {/* Pagination */}
         <section className='pagination-container'>
           <button onClick={() => pageNumber > 0 && setPageNumber(pageNumber - 1)}>Página anterior</button>
-          <button onClick={() => maxPageNumber > pageNumber && setPageNumber(pageNumber + 1)}>Siguiente pagina</button>
+          <button className='btn' onClick={() => maxPageNumber > pageNumber && setPageNumber(pageNumber + 1)}>
+            Siguiente pagina
+          </button>
         </section>
       </Layout>
     </PrivateRoute>

@@ -2,6 +2,9 @@
 $white-color: #fff;
 $black-color: #000;
 $border-radius: 7.5px;
+$primary-color: #3182ce;
+$primary-color-hover: #2b6cb0;
+$primary-color-active: #2c5281;
 
 // Mixins
 @mixin decoration-shadow() {
@@ -26,9 +29,35 @@ $border-radius: 7.5px;
   background-color: $white-color;
 }
 
+@mixin button() {
+  button,
+  input[type='submit'],
+  input[type='button'] {
+    @include decoration-shadow();
+    @include boarder-radius();
+
+    border: none;
+    background-color: $primary-color;
+    color: $white-color;
+
+    &:hover {
+      background-color: $primary-color-hover;
+    }
+
+    &:active {
+      background-color: $primary-color-active;
+    }
+  }
+}
+
 // Styles
 .title {
   font-size: 1.5em;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1.2em;
   font-weight: bold;
 }
 
@@ -41,22 +70,44 @@ $border-radius: 7.5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card {
-  @include decoration-shadow();
-  @include boarder-radius();
-  @include white-bg();
-
-  align-items: center;
+.cards-group {
   display: flex;
-  flex-direction: column;
-  height: 100%;
   justify-content: center;
-  margin: 10px;
-  padding: 20px;
-  width: 100%;
+  flex-wrap: wrap;
+
+  & .card {
+    @include decoration-shadow();
+    @include boarder-radius();
+    @include white-bg();
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+
+    & .card-title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    & .card-subtitle {
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    & .card-text {
+      font-size: 1em;
+    }
+  }
 }
 
 .pagination-container {
+  @include button();
+
   align-items: center;
   display: flex;
   height: 100%;
@@ -64,12 +115,48 @@ $border-radius: 7.5px;
   width: 100%;
 
   & button {
+    margin: 0 10px;
+    padding: 10px;
+  }
+}
+
+.form-group {
+  @include button();
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  width: 90%;
+
+  & .form-control {
     @include decoration-shadow();
     @include boarder-radius();
     @include white-bg();
 
     border: none;
+  }
+
+  & label {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  & select {
+    @include decoration-shadow();
+
+    & option {
+      font-size: 1em;
+    }
+  }
+
+  & .form-control,
+  & .btn,
+  & label,
+  & input,
+  & select {
     margin: 0 10px;
     padding: 10px;
+    width: 100%;
   }
 }
