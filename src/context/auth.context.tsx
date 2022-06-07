@@ -4,33 +4,35 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-interface AuthUser {
+export interface AuthUser {
   email: string;
-  token: string;
+  firstName?: string;
+  lastName?: string;
+  password: string;
 }
 
-type AuthUserState = AuthUser | null | boolean; // boolean type is for test the views until the auth is done
+type AuthUserState = AuthUser | null;
 
 // This context contain the auth user state
 export const AuthContext = createContext({
   authenticatedUser: null as AuthUserState,
-  login: () => {},
-  signin: () => {},
-  logout: () => {},
+  login: async (user: AuthUser) => {},
+  signin: async (newUser: AuthUser) => {},
+  logout: async () => {},
 });
 
 export default function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   const [authenticatedUser, setAuthenticatedUser] = useState<AuthUserState>(null);
 
-  const login = () => {
-    setAuthenticatedUser(true);
+  const login = async (user: AuthUser) => {
+    setAuthenticatedUser(user);
   };
 
-  const signin = () => {
-    setAuthenticatedUser(true);
+  const signin = async (newUser: AuthUser) => {
+    setAuthenticatedUser(newUser);
   };
 
-  const logout = () => {
+  const logout = async () => {
     setAuthenticatedUser(null);
   };
 
