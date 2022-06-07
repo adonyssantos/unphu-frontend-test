@@ -48,9 +48,7 @@ export default function Header({ onOpen, ...props }: Header) {
               <HStack>
                 <Avatar size={'sm'} />
                 <VStack display={{ base: 'none', md: 'flex' }} alignItems='flex-start' spacing='1px' ml='2'>
-                  <Text fontSize='ms'>
-                    {authenticatedUser?.firstName} {authenticatedUser?.lastName}
-                  </Text>
+                  <Text fontSize='ms'>{authenticatedUser?.displayName}</Text>
                   <Text fontSize='xs'>{authenticatedUser?.email}</Text>
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>

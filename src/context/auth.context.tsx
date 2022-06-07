@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from 'react';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../config';
 
 interface AuthProviderProps {
@@ -19,7 +19,7 @@ export const AuthContext = createContext({
   authenticatedUser: null as AuthUserState,
   login: async (user: AuthUser): Promise<AuthUser | Error | void> => {},
   signin: async (newUser: AuthUser): Promise<AuthUser | Error | void> => {},
-  logout: async () => {},
+  logout: async (): Promise<string | Error | void> => {},
 });
 
 export default function AuthProvider({ children }: AuthProviderProps): JSX.Element {
@@ -72,7 +72,14 @@ export default function AuthProvider({ children }: AuthProviderProps): JSX.Eleme
   };
 
   const logout = async () => {
-    setAuthenticatedUser(null);
+    return await signOut(auth)
+      .then(() => {
+        setAuthenticatedUser(null);
+        return Promise.resolve('Logout success');
+      })
+      .catch(error => {
+        return Promise.reject(new Error(error.code));
+      });
   };
 
   return <AuthContext.Provider value={{ authenticatedUser, login, signin, logout }}>{children}</AuthContext.Provider>;
