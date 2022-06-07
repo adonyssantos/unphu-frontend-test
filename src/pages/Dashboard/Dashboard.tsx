@@ -22,17 +22,19 @@ export default function Dashboard() {
   return (
     <PrivateRoute>
       <Layout>
-        {/* Header */}
-        <h1>Panel administrativo</h1>
-        {/* User list */}
+        <h1 className='title'>Panel administrativo</h1>
         <ul>
           {users.map((user: any) => (
-            <li key={user}>{user}</li>
+            <li className='card' key={user}>
+              {user}
+            </li>
           ))}
         </ul>
         {/* Pagination */}
-        <button onClick={() => pageNumber > 0 && setPageNumber(pageNumber - 1)}>Página anterior</button>
-        <button onClick={() => maxPageNumber > pageNumber && setPageNumber(pageNumber + 1)}>Siguiente pagina</button>
+        <section className='pagination-container'>
+          <button onClick={() => pageNumber > 0 && setPageNumber(pageNumber - 1)}>Página anterior</button>
+          <button onClick={() => maxPageNumber > pageNumber && setPageNumber(pageNumber + 1)}>Siguiente pagina</button>
+        </section>
       </Layout>
     </PrivateRoute>
   );
