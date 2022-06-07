@@ -20,11 +20,13 @@ export default function Login() {
     login({
       email,
       password,
-      firstName: 'Nuevo',
-      lastName: 'Usuario',
-    }).then(() => {
-      navigate('/dashboard');
-    });
+    })
+      .then(() => {
+        navigate('/dashboard');
+      })
+      .catch(error => {
+        alert(error);
+      });
   };
 
   return (
@@ -34,13 +36,13 @@ export default function Login() {
           {/* Email field */}
           <FormControl>
             <FormLabel htmlFor='email'>Correo Electrónico:</FormLabel>
-            <Input id='email' name='email' type='text' variant='filled' />
+            <Input id='email' name='email' type='email' variant='filled' required />
           </FormControl>
 
           {/* Password field */}
           <FormControl>
             <FormLabel htmlFor='password'>Contraseña:</FormLabel>
-            <Input id='password' name='password' type='password' variant='filled' />
+            <Input id='password' name='password' type='password' variant='filled' required />
           </FormControl>
 
           {/* Submit button */}
