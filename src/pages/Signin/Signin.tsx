@@ -16,17 +16,20 @@ export default function Signin() {
 
     const email = data.get('email') as AuthUser['email'];
     const password = data.get('password') as AuthUser['password'];
-    const firstName = data.get('firstName') as AuthUser['firstName'];
-    const lastName = data.get('lastName') as AuthUser['lastName'];
+    const firstName = data.get('firstName') as AuthUser['displayName'];
+    const lastName = data.get('lastName') as AuthUser['displayName'];
 
     signin({
       email,
       password,
-      firstName,
-      lastName,
-    }).then(() => {
-      navigate('/dashboard');
-    });
+      displayName: `${firstName} ${lastName}`,
+    })
+      .then(() => {
+        navigate('/dashboard');
+      })
+      .catch(error => {
+        alert(error);
+      });
   };
 
   return (
