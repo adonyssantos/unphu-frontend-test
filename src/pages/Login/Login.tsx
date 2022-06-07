@@ -1,19 +1,29 @@
+import { useContext } from 'react';
+import { AuthContext } from '../../context';
 import { Button, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContainer } from '../../components';
+import { AuthUser } from '../../context';
 
 export default function Login() {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    const email = data.get('email');
-    const password = data.get('password');
+    const email = data.get('email') as AuthUser['email'];
+    const password = data.get('password') as AuthUser['password'];
 
-    console.log({
+    login({
       email,
       password,
+      firstName: 'Nuevo',
+      lastName: 'Usuario',
+    }).then(() => {
+      navigate('/dashboard');
     });
   };
 
