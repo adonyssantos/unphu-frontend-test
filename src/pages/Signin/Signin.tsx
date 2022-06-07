@@ -39,25 +39,25 @@ export default function Signin() {
           {/* Email field */}
           <FormControl>
             <FormLabel htmlFor='email'>Correo Electrónico:</FormLabel>
-            <Input id='email' name='email' type='text' variant='filled' />
+            <Input id='email' name='email' type='email' variant='filled' required />
           </FormControl>
 
           {/* First Name field */}
           <FormControl>
             <FormLabel htmlFor='firstName'>Nombre:</FormLabel>
-            <Input id='firstName' name='firstName' type='text' variant='filled' />
+            <Input id='firstName' name='firstName' type='text' variant='filled' required />
           </FormControl>
 
           {/* Last Name field */}
           <FormControl>
             <FormLabel htmlFor='lastName'>Apellido:</FormLabel>
-            <Input id='lastName' name='lastName' type='text' variant='filled' />
+            <Input id='lastName' name='lastName' type='text' variant='filled' required />
           </FormControl>
 
           {/* Password field */}
           <FormControl>
             <FormLabel htmlFor='password'>Contraseña:</FormLabel>
-            <Input id='password' name='password' type='password' variant='filled' />
+            <Input id='password' name='password' type='password' variant='filled' required />
           </FormControl>
 
           {/* Submit Button */}
