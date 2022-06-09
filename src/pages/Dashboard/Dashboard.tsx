@@ -7,7 +7,7 @@ const PAGE_SIZE: number = 5;
 
 export default function Dashboard() {
   const [pageNumber, setPageNumber] = useState<number>(0);
-  const dispatch = useDispatch() as Dispatch<any>;
+  const dispatch = useDispatch() as Dispatch<unknown>;
   const { users, maxPageNumber } = useSelector((state: RootReducer) => {
     return {
       users: state.users.data,
@@ -24,7 +24,7 @@ export default function Dashboard() {
       <Layout>
         <h1 className='title'>Panel administrativo</h1>
         <ul className='cards-group'>
-          {users.map((user: any) => (
+          {users.map((user: IUser) => (
             <li className='card' key={user}>
               <h1 className='card-title'>{user}</h1>
               <h2 className='card-subtitle'>Detalles del usuario:</h2>
