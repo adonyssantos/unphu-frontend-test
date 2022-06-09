@@ -25,20 +25,20 @@ export default function Dashboard() {
         <h1 className='title'>Panel administrativo</h1>
         <ul className='cards-group'>
           {users.map((user: IUser) => (
-            <li className='card' key={user}>
-              <h1 className='card-title'>{user}</h1>
+            <li className='card' key={`user-${user.name}-${user.identification}`}>
+              <h1 className='card-title'>{user.name}</h1>
               <h2 className='card-subtitle'>Detalles del usuario:</h2>
               <p className='card-text'>
-                <b>Cédula:</b> 1234567890
+                <b>Cédula:</b> {user.identification}
               </p>
               <p className='card-text'>
-                <b>Nombre completo:</b> Fulanito de tal
+                <b>Nombre completo:</b> {user.name} {user.surname} {user.lastName}
               </p>
               <p className='card-text'>
-                <b>Correo electrónico:</b> contact@fulano.dev
+                <b>Correo electrónico:</b> {user.email}
               </p>
               <p className='card-text'>
-                <b>Género:</b> Masculino
+                <b>Género:</b> {user.gender === 'm' ? 'Masculino' : user.gender === 'f' ? 'Femenino' : 'Otro'}
               </p>
             </li>
           ))}
