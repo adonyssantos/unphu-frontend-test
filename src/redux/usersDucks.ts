@@ -1,5 +1,5 @@
 import { db } from '../config';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, query, orderBy, getDocs } from 'firebase/firestore';
 
 // constants
 const INITIAL_STATE = {
@@ -32,36 +32,43 @@ export default function usersReducer(state: UserState = INITIAL_STATE, action: U
   }
 }
 
+const usersRef = collection(db, 'users');
+
 // actions
 export const getSomeUsers = (pageNumber: number, pageSize: number) => {
-  const usersData: any = [];
+  return async (dispatch: DispatchType) => {
+    const q = query(usersRef, orderBy('name'), orderBy('identification'));
+    const querySnapshot = await getDocs(q);
+    let users: Users = [];
 
-  return (dispatch: DispatchType) => {
-    // a pagination
-    const users = usersData.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize);
-    const maxPageNumber = Math.ceil(usersData.length / pageSize) - 1;
+    querySnapshot.forEach(doc => {
+      users = [...users, doc.data() as IUser];
+    });
 
-    if (pageNumber > maxPageNumber) {
-      return;
-    }
+    const maxPageNumber = Math.ceil(users.length / pageSize) - 1;
+    const data = users.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize);
 
     dispatch({
       type: GET_SOME_USERS,
-      payload: { data: users, maxPageNumber },
+      payload: {
+        data,
+        maxPageNumber,
+      },
     });
   };
 };
 
 export const addUser = (user: IUser) => {
   return async (dispatch: DispatchType, getState: () => RootReducer) => {
-    await addDoc(collection(db, 'users'), user).then(() => {
+    await addDoc(usersRef, user).then(() => {
       const state = getState().users;
+      const users = [...state.data, user];
 
       dispatch({
         type: ADD_USER,
         payload: {
-          data: [...state.data, user],
-          maxPageNumber: 0,
+          ...state,
+          data: users,
         },
       });
     });

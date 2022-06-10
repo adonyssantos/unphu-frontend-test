@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSomeUsers } from '../../redux';
 import { Layout, PrivateRoute } from '../../components';
 
-const PAGE_SIZE: number = 5;
+const PAGE_SIZE: number = 2;
 
 export default function Dashboard() {
   const [pageNumber, setPageNumber] = useState<number>(0);
@@ -46,7 +46,7 @@ export default function Dashboard() {
         {/* Pagination */}
         <section className='pagination-container'>
           <button onClick={() => pageNumber > 0 && setPageNumber(pageNumber - 1)}>Página anterior</button>
-          <button className='btn' onClick={() => maxPageNumber > pageNumber && setPageNumber(pageNumber + 1)}>
+          <button className='btn' onClick={() => pageNumber < maxPageNumber && setPageNumber(pageNumber + 1)}>
             Siguiente pagina
           </button>
         </section>

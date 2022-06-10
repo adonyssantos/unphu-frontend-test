@@ -1,10 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addUser } from '../../redux';
 import { Layout, PrivateRoute } from '../../components';
 import { Dispatch } from 'redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
   const dispatch = useDispatch<Dispatch<any>>();
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,6 +30,8 @@ export default function Dashboard() {
     };
 
     dispatch(addUser(user));
+    form.reset();
+    navigate('/dashboard');
   };
   return (
     <PrivateRoute>
