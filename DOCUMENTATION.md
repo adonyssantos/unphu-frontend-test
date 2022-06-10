@@ -1,6 +1,6 @@
 # DOCUMENTATION
 
-Esta es una aplicación que hice rápido para la prueba de React TypeScript Developer de la UNPHU.
+Esta es una aplicación que hice rápido para la prueba de React TypeScript Developer de la UNPHU. Hice algo simple, este proyecto se puede seguir mejorando y optimizando. Resaltar que cualquiera puede ver el listado de usuarios, pero eso se puede solucionar usando reglas de seguridad.
 
 **Hice este proyecto utilizando:**
 
