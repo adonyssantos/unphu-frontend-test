@@ -58,19 +58,21 @@ export const getSomeUsers = (pageNumber: number, pageSize: number) => {
   };
 };
 
-export const addUser = (user: IUser) => {
+export const addUser = (user: IUser, callback: () => void) => {
   return async (dispatch: DispatchType, getState: () => RootReducer) => {
     await addDoc(usersRef, user).then(() => {
       const state = getState().users;
-      const users = [...state.data, user];
+      const data = [...state.data, user];
 
       dispatch({
         type: ADD_USER,
         payload: {
           ...state,
-          data: users,
+          data,
         },
       });
     });
+
+    callback();
   };
 };

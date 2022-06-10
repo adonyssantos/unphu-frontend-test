@@ -29,9 +29,11 @@ export default function Dashboard() {
       birthDate: formData.get('birthDate') as IUser['birthDate'],
     };
 
-    dispatch(addUser(user));
-    form.reset();
-    navigate('/dashboard');
+    dispatch(
+      addUser(user, () => {
+        navigate('/');
+      }),
+    );
   };
   return (
     <PrivateRoute>
