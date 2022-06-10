@@ -89,6 +89,13 @@ $primary-color-active: #2c5281;
     padding: 20px;
     width: 100%;
 
+    // media query 425px and below
+    @media (max-width: 425px) {
+      align-items: start;
+      justify-content: start;
+      text-align: left;
+    }
+
     & .card-title {
       font-size: 1.2em;
       font-weight: bold;
