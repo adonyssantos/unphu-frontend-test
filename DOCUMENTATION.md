@@ -20,3 +20,12 @@ Las rutas de la aplicación están divididas en publicas y privadas. Y son las s
   - `/dashboard`
   - `/dashboard/add`
 - Redirect: si hay usuario logueado hace redirect a `/dashboard`, si no a `/login`
+
+**Para el login puedes usar la siguientes credenciales:**
+
+```
+Email: testuser@adonys.me
+Password: 12345678
+```
+
+Aunque también puedes crear tu propio usuario con un correo y contraseña.
