@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSomeUsers } from '../../redux';
 import { Layout, PrivateRoute } from '../../components';
 
-const PAGE_SIZE: number = 2;
+const PAGE_SIZE: number = 5;
 
 export default function Dashboard() {
   const [pageNumber, setPageNumber] = useState<number>(0);
